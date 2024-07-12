@@ -1,12 +1,16 @@
 ---
-title: "testwebsite"
+title: "포트폴리오 웹사이트"
 jupyter: python3
 ---
+데이터 분석가를 희망합니다.
 
-This is a Quarto website.
+## 홈페이지 첫 화면 입니다.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
 
 ```{python}
 1 + 1
 ```
+
+* 항목1 
+* 항목2
