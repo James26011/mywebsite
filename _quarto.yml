@@ -3,12 +3,13 @@ project:
   output-dir: docs
   
 website:
-  title: "S2zl존태현S2"
+  title: "슬기로운 태현 생활"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - hw1.qmd
 
 format:
   html:
