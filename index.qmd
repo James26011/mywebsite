@@ -11,7 +11,7 @@ about:
         text: Github
         href: https://github.com/James26011
 ---
-데이터 분석가를 희망합니다.
+제조업 분야 데이터 분석가를 희망합니다.
 
 ## LS빅데이터 스쿨 3기 수료(예정)생
 
