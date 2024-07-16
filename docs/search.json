@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "포트폴리오 웹사이트",
+    "title": "ENTJames",
     "section": "",
     "text": "데이터 분석가를 희망합니다."
   },
@@ -11,7 +11,7 @@
     "href": "index.html#홈페이지-첫-화면-입니다.",
     "title": "포트폴리오 웹사이트",
     "section": "홈페이지 첫 화면 입니다.",
-    "text": "홈페이지 첫 화면 입니다.\n\n1 + 1\n\n2\n\n\n\n항목1\n항목2"
+    "text": "홈페이지 첫 화면 입니다.\n\n1 + 1\n\n2\n\n\n동해물과 백두산이 마르고 닳도록~~"
   },
   {
     "objectID": "about.html",
@@ -40,5 +40,12 @@
     "title": "hw1",
     "section": "다음 표의 내용을 데이터 프레임으로 만들어 출력해 보세요.",
     "text": "다음 표의 내용을 데이터 프레임으로 만들어 출력해 보세요.\n\nimport pandas as pd\n\ndf = pd.DataFrame({'제품' : ['사과','딸기','수박'],\n                   '가격' : [1800,1500,3000],\n                   '판매량' : [24,38,13]\n                   })\ndf\n\n\n\n\n\n\n\n\n제품\n가격\n판매량\n\n\n\n\n0\n사과\n1800\n24\n\n\n1\n딸기\n1500\n38\n\n\n2\n수박\n3000\n13"
+  },
+  {
+    "objectID": "index.html#ls빅데이터-스쿨-3기-수료예정생",
+    "href": "index.html#ls빅데이터-스쿨-3기-수료예정생",
+    "title": "ENTJames",
+    "section": "LS빅데이터 스쿨 3기 수료(예정)생",
+    "text": "LS빅데이터 스쿨 3기 수료(예정)생\n\n1 + 1\n\n2\n\n\n동해물과 백두산이 마르고 닳도록~~"
   }
 ]
