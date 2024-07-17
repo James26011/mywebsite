@@ -1,5 +1,8 @@
 ---
-title: "hw1"
+title: "LS 빅데이터 스쿨 Homework 1"
+author: "이태현"
+date: "2024-07-15"
+categoty: [bigdata]
 jupyter: python3
 ---
 2024-07-15(월) homework1
@@ -35,7 +38,7 @@ sell_mean
 ```{python}
 import pandas as pd
 
-mpg = pd.read_csv('mpg.csv')
+mpg = pd.read_csv('C:/Users/USER/Documents/LS빅데이터스쿨/portfolio/data/mpg.csv')
 mpg_new = mpg.copy()
 mpg
 ```
@@ -53,7 +56,7 @@ mpg_new.head()
 ```{python}
 import pandas as pd
 
-midwest = pd.read_csv('midwest.csv')
+midwest = pd.read_csv('C:/Users/USER/Documents/LS빅데이터스쿨/portfolio/data/midwest.csv')
 midwest.info()
 # midwest.shape
 # midwest.describe()

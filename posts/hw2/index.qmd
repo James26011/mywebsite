@@ -1,14 +1,18 @@
 ---
-title: "hw2"
+title: "LS 빅데이터 스쿨 Homework 2"
+author: "이태현"
+date: "2024-07-16"
+categoty: [bigdata]
 jupyter: python3
 ---
+
 2024-07-16(화) homework2
 
 # p.144 혼자서 해보기
 
 ```{python}
 import pandas as pd
-mpg = pd.read_csv('mpg.csv')
+mpg = pd.read_csv('C:/Users/USER/Documents/LS빅데이터스쿨/portfolio/data/mpg.csv')
 ```
 
 
