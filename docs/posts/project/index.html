@@ -186,7 +186,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#점포수-크기에-따른-연령층-확인하기" id="toc-점포수-크기에-따른-연령층-확인하기" class="nav-link active" data-scroll-target="#점포수-크기에-따른-연령층-확인하기">점포수 크기에 따른 연령층 확인하기</a></li>
+  <li><a href="#분석-목적" id="toc-분석-목적" class="nav-link active" data-scroll-target="#분석-목적">분석 목적</a></li>
+  <li><a href="#점포수-크기에-따른-연령층-확인하기" id="toc-점포수-크기에-따른-연령층-확인하기" class="nav-link" data-scroll-target="#점포수-크기에-따른-연령층-확인하기">점포수 크기에 따른 연령층 확인하기</a></li>
+  <li><a href="#이전-데이터-불러오기" id="toc-이전-데이터-불러오기" class="nav-link" data-scroll-target="#이전-데이터-불러오기">이전 데이터 불러오기</a></li>
+  <li><a href="#인구-데이터와-시장-데이터-합치기" id="toc-인구-데이터와-시장-데이터-합치기" class="nav-link" data-scroll-target="#인구-데이터와-시장-데이터-합치기">인구 데이터와 시장 데이터 합치기</a></li>
+  <li><a href="#대-이상-비율의-계급-나누기" id="toc-대-이상-비율의-계급-나누기" class="nav-link" data-scroll-target="#대-이상-비율의-계급-나누기">60대 이상 비율의 계급 나누기</a></li>
+  <li><a href="#표-그리기" id="toc-표-그리기" class="nav-link" data-scroll-target="#표-그리기">표 그리기</a></li>
   </ul>
 </nav>
     </div>
@@ -197,30 +202,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<section id="분석-목적" class="level1">
+<h1>분석 목적</h1>
+<p>전통시장 홍보 목적 가설 : 만약 인구가 많아도 점포수가 적으면 홍보 필요성이 생긴다. 여행 루트에 전통시장을 추가?</p>
+<p>2024년에 보도된 <a href="https://m.thesegye.com/news/view/1065580969734925">세계타임즈</a>에서 KB국민카드의 전통시장 카드 소비 데이터 분석을 볼 수 있습니다. 전통시장의 연령별 매출 비중에서 40%는 60대 이상에서 발생되었습니다. 50대 26%, 40대 17%, 30대 10%, 20대 7%로 연령대가 높을수록 매출 비중이 높게 나타났습니다.</p>
+<p>시장은 인구가 많은 곳에 분포되어 있는데, 전통시장 또한 단순히 인구가 많은 곳이 점포수가 많은지? 주 고객층인 60대 이상이 많은 지역에 점포수가 많은지? 알고 싶었다.</p>
+<p>2015년 기준으로 60대 이상 비율이 높은 행정구역에 점포수가 많이 분포되어 있는지 분석하기. 이를 바탕으로 60대 비율이 적고, 인구가 많은 수도권, 광역시에 점포수가 많은지? 60대 이상 비율이 높고, 인구가 적은 구역에 점포수가 많은지 비교하기.</p>
+<section id="나이-나누기" class="level4">
+<h4 class="anchored" data-anchor-id="나이-나누기">나이 나누기</h4>
+<p><code>0~19세 = age_under_20</code></p>
+<p><code>20~59세 = age_2050</code></p>
+<p><code>60~100세 이상 = age_over_60</code></p>
+<p>한국은 공공기관 및 일부 기업이 60세로 정년으로 두고 있기 때문에 위와 같이 노년의 기준을 60세 이상으로 정했습니다. 미국과 유럽은 60~65세 사이를 정년으로 두고 있습니다. 그리고</p>
+</section>
+</section>
 <section id="점포수-크기에-따른-연령층-확인하기" class="level1">
 <h1>점포수 크기에 따른 연령층 확인하기</h1>
-<section id="세-유소년" class="level4">
-<h4 class="anchored" data-anchor-id="세-유소년">0~19세 = 유소년</h4>
-</section>
-<section id="세-성인" class="level4">
-<h4 class="anchored" data-anchor-id="세-성인">20~59세 = 성인</h4>
-</section>
-<section id="세-이상-노인" class="level4">
-<h4 class="anchored" data-anchor-id="세-이상-노인">60~100세 이상 = 노인</h4>
-<div id="f6a115bc" class="cell" data-execution_count="1">
+<div id="f633032f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 <section id="년-12월-기준-인구조사-파일-불러오기" class="level4">
 <h4 class="anchored" data-anchor-id="년-12월-기준-인구조사-파일-불러오기">2015년 12월 기준 인구조사 파일 불러오기</h4>
-<div id="3fe63474" class="cell" data-execution_count="2">
+<div id="dd364772" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pop <span class="op">=</span> pd.read_excel(<span class="st">'data/pop_2015.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="원본-숫자-안에-를-없애기-문자열을-숫자열로-바꾸기" class="level4">
 <h4 class="anchored" data-anchor-id="원본-숫자-안에-를-없애기-문자열을-숫자열로-바꾸기">원본 숫자 안에 , 를 없애기 (문자열을 숫자열로 바꾸기)</h4>
-<div id="61f11e8f" class="cell" data-execution_count="3">
+<div id="a4368c73" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> pop.iloc[<span class="dv">1</span>:<span class="dv">18</span>,<span class="dv">1</span>:<span class="dv">14</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> subset.columns:</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    subset[col] <span class="op">=</span> subset[col].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
@@ -527,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="4c90dbad" class="cell" data-execution_count="4">
+<div id="aa6ae625" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pop.iloc[<span class="dv">1</span>:<span class="dv">18</span>,<span class="dv">1</span>:<span class="dv">14</span>] <span class="op">=</span> subset</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pop <span class="op">=</span> pop.iloc[<span class="dv">0</span>:<span class="dv">18</span>,<span class="dv">0</span>:<span class="dv">14</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -871,107 +881,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="각-지역마다-연령층-비율-계산하기" class="level4">
 <h4 class="anchored" data-anchor-id="각-지역마다-연령층-비율-계산하기">각 지역마다 연령층 비율 계산하기</h4>
-<div id="7bae6d81" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pop_서울 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">1</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pop_부산 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">2</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pop_대구 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">3</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pop_인천 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">4</span>]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>pop_광주 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">5</span>]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>pop_대전 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">6</span>]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>pop_울산 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">7</span>]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>pop_세종 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">8</span>]</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>pop_경기 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">9</span>]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>pop_강원 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">10</span>]</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>pop_충북 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">11</span>]</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>pop_충남 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">12</span>]</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>pop_전북 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">13</span>]</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>pop_전남 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">14</span>]</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>pop_경북 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">15</span>]</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>pop_경남 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">16</span>]</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>pop_제주 <span class="op">=</span> pop[<span class="st">'총 인구수'</span>][<span class="dv">17</span>]</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>서울_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">1</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_서울<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>부산_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">2</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_부산<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>대구_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">3</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대구<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>인천_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">4</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_인천<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>광주_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">5</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_광주<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>대전_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">6</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대전<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>울산_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">7</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_울산<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>세종_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">8</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_세종<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>경기_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">9</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경기<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>강원_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">10</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_강원<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>충북_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">11</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>충남_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">12</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>전북_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">13</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>전남_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">14</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>경북_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">15</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>경남_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">16</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>제주_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">17</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_제주<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>서울_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">1</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_서울 <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>부산_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">2</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_부산<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>대구_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">3</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대구<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>인천_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">4</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_인천<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>광주_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">5</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_광주<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>대전_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">6</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대전<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>울산_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">7</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_울산<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>세종_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">8</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_세종<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>경기_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">9</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경기<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>강원_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">10</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_강원<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>충북_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">11</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>충남_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">12</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>전북_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">13</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>전남_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">14</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>경북_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">15</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>경남_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">16</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>제주_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">17</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_제주<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>서울_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">1</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_서울 <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>부산_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">2</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_부산<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>대구_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">3</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대구<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>인천_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">4</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_인천<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>광주_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">5</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_광주<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>대전_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">6</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대전<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>울산_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">7</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_울산<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>세종_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">8</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_세종<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>경기_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">9</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경기<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>강원_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">10</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_강원<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>충북_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">11</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>충남_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">12</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>전북_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">13</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>전남_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">14</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>경북_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">15</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경북<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>경남_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">16</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경남<span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>제주_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">17</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_제주<span class="op">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f4a606cb" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pop_서울, pop_부산, pop_대구, pop_인천, pop_광주, pop_대전, pop_울산, pop_세종, <span class="op">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pop_경기, pop_강원, pop_충북, pop_충남, pop_전북, pop_전남, pop_경북, pop_경남, pop_제주 <span class="op">=</span> [</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    pop[<span class="st">'총 인구수'</span>][i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">18</span>)]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>서울_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">1</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_서울<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>부산_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">2</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_부산<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>대구_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">3</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대구<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>인천_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">4</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_인천<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>광주_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">5</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_광주<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>대전_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">6</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대전<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>울산_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">7</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_울산<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>세종_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">8</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_세종<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>경기_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">9</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경기<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>강원_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">10</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_강원<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>충북_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">11</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>충남_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">12</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>전북_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">13</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>전남_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">14</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>경북_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">15</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>경남_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">16</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>제주_유소년_비율 <span class="op">=</span> (pop.iloc[<span class="dv">17</span>,<span class="dv">3</span>:<span class="dv">5</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_제주<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>서울_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">1</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_서울 <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>부산_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">2</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_부산<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>대구_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">3</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대구<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>인천_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">4</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_인천<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>광주_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">5</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_광주<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>대전_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">6</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대전<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>울산_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">7</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_울산<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>세종_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">8</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_세종<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>경기_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">9</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경기<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>강원_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">10</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_강원<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>충북_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">11</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>충남_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">12</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>전북_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">13</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>전남_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">14</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>경북_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">15</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>경남_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">16</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>제주_성인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">17</span>,<span class="dv">5</span>:<span class="dv">9</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_제주<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>서울_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">1</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_서울 <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>부산_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">2</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_부산<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>대구_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">3</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대구<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>인천_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">4</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_인천<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>광주_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">5</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_광주<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>대전_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">6</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_대전<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>울산_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">7</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_울산<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>세종_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">8</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_세종<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>경기_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">9</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경기<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>강원_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">10</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_강원<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>충북_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">11</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>충남_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">12</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_충남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>전북_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">13</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>전남_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">14</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_전남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>경북_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">15</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경북<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>경남_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">16</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_경남<span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>제주_노인_비율 <span class="op">=</span> (pop.iloc[<span class="dv">17</span>,<span class="dv">9</span>:<span class="dv">14</span>].<span class="bu">sum</span>()) <span class="op">/</span> pop_제주<span class="op">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="인구-비율-dataframe-만들기" class="level4">
 <h4 class="anchored" data-anchor-id="인구-비율-dataframe-만들기">인구 비율 DataFrame 만들기</h4>
-<div id="12c0124e" class="cell" data-execution_count="6">
+<div id="d70ee2c2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pop_ratio <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'seoul'</span>      : [서울_유소년_비율, 서울_성인_비율, 서울_노인_비율],</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'busan'</span>      : [부산_유소년_비율, 부산_성인_비율, 부산_노인_비율],</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'daegu'</span>      : [대구_유소년_비율, 대구_성인_비율, 대구_노인_비율],</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'incheon'</span>    : [인천_유소년_비율, 인천_성인_비율, 인천_노인_비율],</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'gwangju'</span>    : [광주_유소년_비율, 광주_성인_비율, 광주_노인_비율],</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'dajeon'</span>     : [대전_유소년_비율, 대전_성인_비율, 대전_노인_비율],</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ulsan'</span>      : [울산_유소년_비율, 울산_성인_비율, 울산_노인_비율],</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'sejong'</span>     : [세종_유소년_비율, 세종_성인_비율, 세종_노인_비율],</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">'gyeonggi'</span>   : [경기_유소년_비율, 경기_성인_비율, 경기_노인_비율],</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">'gangwon'</span>    : [강원_유소년_비율, 강원_성인_비율, 강원_노인_비율],</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">'chung_buk'</span>  : [충북_유소년_비율, 충북_성인_비율, 충북_노인_비율],</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'chung_nam'</span>  : [충남_유소년_비율, 충남_성인_비율, 충남_노인_비율],</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'jun_buk'</span>    : [전북_유소년_비율, 전북_성인_비율, 전북_노인_비율],</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">'jun_nam'</span>    : [전남_유소년_비율, 전남_성인_비율, 전남_노인_비율],</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">'gyeong_buk'</span> : [경북_유소년_비율, 경북_성인_비율, 경북_노인_비율],</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">'gyeong_nam'</span> : [경남_유소년_비율, 경남_성인_비율, 경남_노인_비율],</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">'jeju'</span>       : [제주_유소년_비율, 제주_성인_비율, 제주_노인_비율]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'서울'</span>      : [서울_유소년_비율, 서울_성인_비율, 서울_노인_비율],</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'부산'</span>      : [부산_유소년_비율, 부산_성인_비율, 부산_노인_비율],</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'대구'</span>      : [대구_유소년_비율, 대구_성인_비율, 대구_노인_비율],</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'인천'</span>    : [인천_유소년_비율, 인천_성인_비율, 인천_노인_비율],</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">'광주'</span>    : [광주_유소년_비율, 광주_성인_비율, 광주_노인_비율],</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">'대전'</span>     : [대전_유소년_비율, 대전_성인_비율, 대전_노인_비율],</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">'울산'</span>      : [울산_유소년_비율, 울산_성인_비율, 울산_노인_비율],</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">'세종'</span>     : [세종_유소년_비율, 세종_성인_비율, 세종_노인_비율],</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">'경기도'</span>   : [경기_유소년_비율, 경기_성인_비율, 경기_노인_비율],</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">'강원'</span>    : [강원_유소년_비율, 강원_성인_비율, 강원_노인_비율],</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">'충청북도'</span>  : [충북_유소년_비율, 충북_성인_비율, 충북_노인_비율],</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">'충청남도'</span>  : [충남_유소년_비율, 충남_성인_비율, 충남_노인_비율],</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">'전라북도'</span>    : [전북_유소년_비율, 전북_성인_비율, 전북_노인_비율],</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">'전라남도'</span>    : [전남_유소년_비율, 전남_성인_비율, 전남_노인_비율],</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">'경상북도'</span> : [경북_유소년_비율, 경북_성인_비율, 경북_노인_비율],</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">'경상남도'</span> : [경남_유소년_비율, 경남_성인_비율, 경남_노인_비율],</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">'제주도'</span>       : [제주_유소년_비율, 제주_성인_비율, 제주_노인_비율]</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  })</span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>pop_ratio.index <span class="op">=</span> [<span class="st">'youth'</span>,<span class="st">'adult'</span>,<span class="st">'old'</span>]</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>pop_ratio.index <span class="op">=</span> [<span class="st">'age_under_20'</span>,<span class="st">'age_2050'</span>,<span class="st">'age_over_60'</span>]</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>pop_ratio <span class="op">=</span> pop_ratio.transpose()</span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>pop_ratio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
@@ -981,85 +977,1045 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">seoul</th>
-<th data-quarto-table-cell-role="th">busan</th>
-<th data-quarto-table-cell-role="th">daegu</th>
-<th data-quarto-table-cell-role="th">incheon</th>
-<th data-quarto-table-cell-role="th">gwangju</th>
-<th data-quarto-table-cell-role="th">dajeon</th>
-<th data-quarto-table-cell-role="th">ulsan</th>
-<th data-quarto-table-cell-role="th">sejong</th>
-<th data-quarto-table-cell-role="th">gyeonggi</th>
-<th data-quarto-table-cell-role="th">gangwon</th>
-<th data-quarto-table-cell-role="th">chung_buk</th>
-<th data-quarto-table-cell-role="th">chung_nam</th>
-<th data-quarto-table-cell-role="th">jun_buk</th>
-<th data-quarto-table-cell-role="th">jun_nam</th>
-<th data-quarto-table-cell-role="th">gyeong_buk</th>
-<th data-quarto-table-cell-role="th">gyeong_nam</th>
-<th data-quarto-table-cell-role="th">jeju</th>
+<th data-quarto-table-cell-role="th">age_under_20</th>
+<th data-quarto-table-cell-role="th">age_2050</th>
+<th data-quarto-table-cell-role="th">age_over_60</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">youth</td>
+<td data-quarto-table-cell-role="th">서울</td>
 <td>17.651737</td>
-<td>17.437931</td>
-<td>20.005595</td>
-<td>20.380236</td>
-<td>23.142591</td>
-<td>21.728893</td>
-<td>21.831408</td>
-<td>25.238046</td>
-<td>21.808344</td>
-<td>18.996236</td>
-<td>20.325553</td>
-<td>20.525604</td>
-<td>20.197613</td>
-<td>19.282335</td>
-<td>18.525832</td>
-<td>20.868237</td>
-<td>22.501141</td>
+<td>63.912396</td>
+<td>18.435867</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">adult</td>
-<td>63.912396</td>
+<td data-quarto-table-cell-role="th">부산</td>
+<td>17.437931</td>
 <td>60.857391</td>
-<td>61.407557</td>
-<td>63.853490</td>
-<td>60.802718</td>
-<td>62.230482</td>
-<td>64.150336</td>
-<td>59.895488</td>
-<td>62.918054</td>
-<td>57.711840</td>
-<td>59.036953</td>
-<td>57.425821</td>
-<td>55.962285</td>
-<td>54.060092</td>
-<td>57.134052</td>
-<td>59.572973</td>
-<td>58.640284</td>
+<td>21.704678</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">old</td>
-<td>18.435867</td>
-<td>21.704678</td>
+<td data-quarto-table-cell-role="th">대구</td>
+<td>20.005595</td>
+<td>61.407557</td>
 <td>18.586848</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">인천</td>
+<td>20.380236</td>
+<td>63.853490</td>
 <td>15.766274</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">광주</td>
+<td>23.142591</td>
+<td>60.802718</td>
 <td>16.054691</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">대전</td>
+<td>21.728893</td>
+<td>62.230482</td>
 <td>16.040625</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">울산</td>
+<td>21.831408</td>
+<td>64.150336</td>
 <td>14.018256</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">세종</td>
+<td>25.238046</td>
+<td>59.895488</td>
 <td>14.866467</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">경기도</td>
+<td>21.808344</td>
+<td>62.918054</td>
 <td>15.273602</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">강원</td>
+<td>18.996236</td>
+<td>57.711840</td>
 <td>23.291924</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">충청북도</td>
+<td>20.325553</td>
+<td>59.036953</td>
 <td>20.637494</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">충청남도</td>
+<td>20.525604</td>
+<td>57.425821</td>
 <td>22.048575</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">전라북도</td>
+<td>20.197613</td>
+<td>55.962285</td>
 <td>23.840101</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">전라남도</td>
+<td>19.282335</td>
+<td>54.060092</td>
 <td>26.657573</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">경상북도</td>
+<td>18.525832</td>
+<td>57.134052</td>
 <td>24.340117</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">경상남도</td>
+<td>20.868237</td>
+<td>59.572973</td>
 <td>19.558790</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">제주도</td>
+<td>22.501141</td>
+<td>58.640284</td>
 <td>18.858575</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="fb28e6ef" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 지역 칼럼 추가하기</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pop_ratio[<span class="st">'region'</span>] <span class="op">=</span> [<span class="st">'서울특별시'</span>, <span class="st">'부산광역시'</span>, <span class="st">'대구광역시'</span>, <span class="st">'인천광역시'</span>, <span class="st">'광주광역시'</span>, <span class="st">'대전광역시'</span>, <span class="st">'울산광역시'</span>, <span class="st">'세종특별시'</span>, <span class="st">'경기도'</span>, <span class="st">'강원도'</span>, <span class="st">'충청북도'</span>, <span class="st">'충청남도'</span>, <span class="st">'전라북도'</span>, <span class="st">'전라남도'</span>, <span class="st">'경상북도'</span>, <span class="st">'경상남도'</span>, <span class="st">'제주도'</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>pop_ratio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age_under_20</th>
+<th data-quarto-table-cell-role="th">age_2050</th>
+<th data-quarto-table-cell-role="th">age_over_60</th>
+<th data-quarto-table-cell-role="th">region</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">서울</td>
+<td>17.651737</td>
+<td>63.912396</td>
+<td>18.435867</td>
+<td>서울특별시</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">부산</td>
+<td>17.437931</td>
+<td>60.857391</td>
+<td>21.704678</td>
+<td>부산광역시</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">대구</td>
+<td>20.005595</td>
+<td>61.407557</td>
+<td>18.586848</td>
+<td>대구광역시</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">인천</td>
+<td>20.380236</td>
+<td>63.853490</td>
+<td>15.766274</td>
+<td>인천광역시</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">광주</td>
+<td>23.142591</td>
+<td>60.802718</td>
+<td>16.054691</td>
+<td>광주광역시</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">대전</td>
+<td>21.728893</td>
+<td>62.230482</td>
+<td>16.040625</td>
+<td>대전광역시</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">울산</td>
+<td>21.831408</td>
+<td>64.150336</td>
+<td>14.018256</td>
+<td>울산광역시</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">세종</td>
+<td>25.238046</td>
+<td>59.895488</td>
+<td>14.866467</td>
+<td>세종특별시</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">경기도</td>
+<td>21.808344</td>
+<td>62.918054</td>
+<td>15.273602</td>
+<td>경기도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">강원</td>
+<td>18.996236</td>
+<td>57.711840</td>
+<td>23.291924</td>
+<td>강원도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">충청북도</td>
+<td>20.325553</td>
+<td>59.036953</td>
+<td>20.637494</td>
+<td>충청북도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">충청남도</td>
+<td>20.525604</td>
+<td>57.425821</td>
+<td>22.048575</td>
+<td>충청남도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">전라북도</td>
+<td>20.197613</td>
+<td>55.962285</td>
+<td>23.840101</td>
+<td>전라북도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">전라남도</td>
+<td>19.282335</td>
+<td>54.060092</td>
+<td>26.657573</td>
+<td>전라남도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">경상북도</td>
+<td>18.525832</td>
+<td>57.134052</td>
+<td>24.340117</td>
+<td>경상북도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">경상남도</td>
+<td>20.868237</td>
+<td>59.572973</td>
+<td>19.558790</td>
+<td>경상남도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">제주도</td>
+<td>22.501141</td>
+<td>58.640284</td>
+<td>18.858575</td>
+<td>제주도</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="이전-데이터-불러오기" class="level1">
+<h1>이전 데이터 불러오기</h1>
+<div id="b0e3db89" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터 불러오기</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> pd.read_excel(<span class="st">"data/traditionalmarket.xlsx"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 분석을 위한 복사본 만들기</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>market2 <span class="op">=</span> market.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1e09300d" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 엑셀의 변수 한글을 영어로 rename</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>market2 <span class="op">=</span> market2.rename(columns <span class="op">=</span> {<span class="st">"시장명"</span>              : <span class="st">"market_name"</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"시장유형"</span>            : <span class="st">"type"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"소재지도로명주소"</span>    : <span class="st">"adress_road"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"시장개설주기"</span>        : <span class="st">"open_period"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"소재지지번주소"</span>      : <span class="st">"address_old"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"점포수"</span>              : <span class="st">"market_count"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"사용가능상품권"</span>      : <span class="st">"certificate"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"공중화장실 보유여부"</span> :<span class="st">"public_toilet"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"주차장 보유여부"</span>     : <span class="st">"parking_lot"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"개설년도"</span>            : <span class="st">"year"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"데이터기준일자"</span>      : <span class="st">"data_date"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="30c151cd" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터의 정보 확인하기</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>market2.describe()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>market2[<span class="st">"public_toilet"</span>].info()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>market2[<span class="st">"parking_lot"</span>].info()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>market2[<span class="st">'market_count'</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.series.Series'&gt;
+RangeIndex: 1439 entries, 0 to 1438
+Series name: public_toilet
+Non-Null Count  Dtype 
+--------------  ----- 
+1439 non-null   object
+dtypes: object(1)
+memory usage: 11.4+ KB
+&lt;class 'pandas.core.series.Series'&gt;
+RangeIndex: 1439 entries, 0 to 1438
+Series name: parking_lot
+Non-Null Count  Dtype 
+--------------  ----- 
+1439 non-null   object
+dtypes: object(1)
+memory usage: 11.4+ KB</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>count    1439.000000
+mean      143.907575
+std       298.989963
+min         0.000000
+25%        50.000000
+50%        80.000000
+75%       134.000000
+max      5852.000000
+Name: market_count, dtype: float64</code></pre>
+</div>
+</div>
+<div id="7f4c246b" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 점포수에 따른 규모 크기를 설명해주는 변수 만들기</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>market2 <span class="op">=</span> market2.assign(market_scale <span class="op">=</span> np.where(market2[<span class="st">"market_count"</span>] <span class="op">&gt;=</span> <span class="dv">134</span>, <span class="st">"large"</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                                        np.where(market2[<span class="st">"market_count"</span>] <span class="op">&gt;=</span> <span class="dv">50</span>, <span class="st">"medium"</span>, <span class="st">"small"</span>)))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 편의시설의 유무에 따른 레벨링 하기</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>market2[<span class="st">'level'</span>] <span class="op">=</span> np.where((market2[<span class="st">'public_toilet'</span>] <span class="op">==</span> <span class="st">'Y'</span>) <span class="op">&amp;</span> (market2[<span class="st">'parking_lot'</span>] <span class="op">==</span> <span class="st">'Y'</span>), <span class="st">'high'</span>, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                   np.where((market2[<span class="st">'public_toilet'</span>] <span class="op">==</span> <span class="st">'N'</span>) <span class="op">&amp;</span> (market2[<span class="st">'public_toilet'</span>] <span class="op">==</span> <span class="st">'N'</span>) , <span class="st">'low'</span>, <span class="st">'intermediate'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="88f899f2" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 확인 절차</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>market2.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">market_name</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">adress_road</th>
+<th data-quarto-table-cell-role="th">open_period</th>
+<th data-quarto-table-cell-role="th">address_old</th>
+<th data-quarto-table-cell-role="th">market_count</th>
+<th data-quarto-table-cell-role="th">certificate</th>
+<th data-quarto-table-cell-role="th">public_toilet</th>
+<th data-quarto-table-cell-role="th">parking_lot</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">data_date</th>
+<th data-quarto-table-cell-role="th">market_scale</th>
+<th data-quarto-table-cell-role="th">level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>중앙시장</td>
+<td>상설</td>
+<td>강원도 강릉시 금성로 21</td>
+<td>상설</td>
+<td>강원 강릉시 성남동 50번지</td>
+<td>229</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>1980.0</td>
+<td>2015-12-31</td>
+<td>large</td>
+<td>high</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>강릉동부시장</td>
+<td>상설</td>
+<td>강원도 강릉시 옥천로 48</td>
+<td>상설</td>
+<td>강원 강릉시 옥천동 223번지</td>
+<td>91</td>
+<td>NaN</td>
+<td>Y</td>
+<td>N</td>
+<td>2014.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>intermediate</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>강릉서부시장</td>
+<td>상설</td>
+<td>강원도 강릉시 임영로 155번길 6</td>
+<td>상설</td>
+<td>강원 강릉시 용강동 29번지</td>
+<td>109</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>1977.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>주문진종합시장</td>
+<td>상설+정기</td>
+<td>강원도 강릉시 주문진읍 구 시장길</td>
+<td>5일</td>
+<td>강원 강릉시 주문진읍 주문리 321-52번지</td>
+<td>77</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2006.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>주문진수산시장</td>
+<td>상설</td>
+<td>강원도 강릉시 주문진읍 시장1길 4-1</td>
+<td>상설</td>
+<td>강원 강릉시 주문진읍 주문리 312-91번지</td>
+<td>42</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2007.0</td>
+<td>2015-12-31</td>
+<td>small</td>
+<td>high</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="d8d49864" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 그리기</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># x축을 편의 시설 레벨</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>sns.countplot(data <span class="op">=</span> market2, x <span class="op">=</span> <span class="st">'level'</span>, hue <span class="op">=</span> <span class="st">'level'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 그리기 위한 df 생성</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 시장 유형와 규모 크기에 따른 그룹화 / 규모 크기 갯수 추가</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> market2.groupby([<span class="st">"type"</span>, <span class="st">"market_scale"</span>], as_index <span class="op">=</span> <span class="va">False</span>) <span class="op">\</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>            .agg(market_count <span class="op">=</span> (<span class="st">"market_scale"</span>, <span class="st">"count"</span>))</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 규모 크기에 따른 내림차순</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>df.sort_values(<span class="st">'market_count'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 만든 df를 x축에 시장 유형, y축은 규모 크기에 따른 점포 갯수</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>sns.barplot(data <span class="op">=</span> df, x <span class="op">=</span> <span class="st">'type'</span>, y <span class="op">=</span> <span class="st">'market_count'</span>, hue <span class="op">=</span> <span class="st">'market_scale'</span>)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-14-output-1.png" width="593" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\USER\AppData\Local\Programs\Python\Python39\lib\site-packages\IPython\core\pylabtools.py:152: UserWarning:
+
+Glyph 49345 (\N{HANGUL SYLLABLE SANG}) missing from current font.
+
+C:\Users\USER\AppData\Local\Programs\Python\Python39\lib\site-packages\IPython\core\pylabtools.py:152: UserWarning:
+
+Glyph 49444 (\N{HANGUL SYLLABLE SEOL}) missing from current font.
+
+C:\Users\USER\AppData\Local\Programs\Python\Python39\lib\site-packages\IPython\core\pylabtools.py:152: UserWarning:
+
+Glyph 51221 (\N{HANGUL SYLLABLE JEONG}) missing from current font.
+
+C:\Users\USER\AppData\Local\Programs\Python\Python39\lib\site-packages\IPython\core\pylabtools.py:152: UserWarning:
+
+Glyph 44592 (\N{HANGUL SYLLABLE GI}) missing from current font.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-14-output-3.png" width="593" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="f26b0655" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div id="c563bcc2" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>market2[<span class="st">'region'</span>] <span class="op">=</span> market2[<span class="st">'adress_road'</span>].<span class="bu">str</span>.split().<span class="bu">str</span>[<span class="dv">0</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>market2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">market_name</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">adress_road</th>
+<th data-quarto-table-cell-role="th">open_period</th>
+<th data-quarto-table-cell-role="th">address_old</th>
+<th data-quarto-table-cell-role="th">market_count</th>
+<th data-quarto-table-cell-role="th">certificate</th>
+<th data-quarto-table-cell-role="th">public_toilet</th>
+<th data-quarto-table-cell-role="th">parking_lot</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">data_date</th>
+<th data-quarto-table-cell-role="th">market_scale</th>
+<th data-quarto-table-cell-role="th">level</th>
+<th data-quarto-table-cell-role="th">region</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>중앙시장</td>
+<td>상설</td>
+<td>강원도 강릉시 금성로 21</td>
+<td>상설</td>
+<td>강원 강릉시 성남동 50번지</td>
+<td>229</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>1980.0</td>
+<td>2015-12-31</td>
+<td>large</td>
+<td>high</td>
+<td>강원도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>강릉동부시장</td>
+<td>상설</td>
+<td>강원도 강릉시 옥천로 48</td>
+<td>상설</td>
+<td>강원 강릉시 옥천동 223번지</td>
+<td>91</td>
+<td>NaN</td>
+<td>Y</td>
+<td>N</td>
+<td>2014.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>intermediate</td>
+<td>강원도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>강릉서부시장</td>
+<td>상설</td>
+<td>강원도 강릉시 임영로 155번길 6</td>
+<td>상설</td>
+<td>강원 강릉시 용강동 29번지</td>
+<td>109</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>1977.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>강원도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>주문진종합시장</td>
+<td>상설+정기</td>
+<td>강원도 강릉시 주문진읍 구 시장길</td>
+<td>5일</td>
+<td>강원 강릉시 주문진읍 주문리 321-52번지</td>
+<td>77</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2006.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>강원도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>주문진수산시장</td>
+<td>상설</td>
+<td>강원도 강릉시 주문진읍 시장1길 4-1</td>
+<td>상설</td>
+<td>강원 강릉시 주문진읍 주문리 312-91번지</td>
+<td>42</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2007.0</td>
+<td>2015-12-31</td>
+<td>small</td>
+<td>high</td>
+<td>강원도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1434</td>
+<td>엄정내창시장</td>
+<td>상설+정기</td>
+<td>충청북도 충주시 엄정면 내창로 191-1</td>
+<td>5일</td>
+<td>충북 충주시 엄정면 미내리 159-15</td>
+<td>98</td>
+<td>온누리상품권</td>
+<td>N</td>
+<td>N</td>
+<td>2013.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>low</td>
+<td>충청북도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1435</td>
+<td>중앙공설시장</td>
+<td>상설</td>
+<td>충청북도 충주시 예성로 168</td>
+<td>상설</td>
+<td>충북 충주시 성서동 306</td>
+<td>65</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2005.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>충청북도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1436</td>
+<td>남부시장</td>
+<td>상설</td>
+<td>충청북도 충주시 지곡10길 38-1</td>
+<td>상설</td>
+<td>충북 충주시 지현동 1431</td>
+<td>61</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2005.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>충청북도</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1437</td>
+<td>충주자유시장</td>
+<td>상설+정기</td>
+<td>충청북도 충주시 충인6길 16</td>
+<td>5일</td>
+<td>충북 충주시 충인동 325</td>
+<td>274</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2005.0</td>
+<td>2015-12-31</td>
+<td>large</td>
+<td>high</td>
+<td>충청북도</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1438</td>
+<td>목행시장</td>
+<td>상설+정기</td>
+<td>충청북도 충주시 행정9길 35</td>
+<td>5일</td>
+<td>충북 충주시 목행동 676-44</td>
+<td>92</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2013.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>충청북도</td>
+</tr>
+</tbody>
+</table>
+
+<p>1439 rows × 14 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="인구-데이터와-시장-데이터-합치기" class="level1">
+<h1>인구 데이터와 시장 데이터 합치기</h1>
+<div id="80fb7de8" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>market_pop <span class="op">=</span> pd.merge(market2, pop_ratio, how <span class="op">=</span> <span class="st">'left'</span>, on <span class="op">=</span> <span class="st">'region'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>market_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">market_name</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">adress_road</th>
+<th data-quarto-table-cell-role="th">open_period</th>
+<th data-quarto-table-cell-role="th">address_old</th>
+<th data-quarto-table-cell-role="th">market_count</th>
+<th data-quarto-table-cell-role="th">certificate</th>
+<th data-quarto-table-cell-role="th">public_toilet</th>
+<th data-quarto-table-cell-role="th">parking_lot</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">data_date</th>
+<th data-quarto-table-cell-role="th">market_scale</th>
+<th data-quarto-table-cell-role="th">level</th>
+<th data-quarto-table-cell-role="th">region</th>
+<th data-quarto-table-cell-role="th">age_under_20</th>
+<th data-quarto-table-cell-role="th">age_2050</th>
+<th data-quarto-table-cell-role="th">age_over_60</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>중앙시장</td>
+<td>상설</td>
+<td>강원도 강릉시 금성로 21</td>
+<td>상설</td>
+<td>강원 강릉시 성남동 50번지</td>
+<td>229</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>1980.0</td>
+<td>2015-12-31</td>
+<td>large</td>
+<td>high</td>
+<td>강원도</td>
+<td>18.996236</td>
+<td>57.711840</td>
+<td>23.291924</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>강릉동부시장</td>
+<td>상설</td>
+<td>강원도 강릉시 옥천로 48</td>
+<td>상설</td>
+<td>강원 강릉시 옥천동 223번지</td>
+<td>91</td>
+<td>NaN</td>
+<td>Y</td>
+<td>N</td>
+<td>2014.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>intermediate</td>
+<td>강원도</td>
+<td>18.996236</td>
+<td>57.711840</td>
+<td>23.291924</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>강릉서부시장</td>
+<td>상설</td>
+<td>강원도 강릉시 임영로 155번길 6</td>
+<td>상설</td>
+<td>강원 강릉시 용강동 29번지</td>
+<td>109</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>1977.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>강원도</td>
+<td>18.996236</td>
+<td>57.711840</td>
+<td>23.291924</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>주문진종합시장</td>
+<td>상설+정기</td>
+<td>강원도 강릉시 주문진읍 구 시장길</td>
+<td>5일</td>
+<td>강원 강릉시 주문진읍 주문리 321-52번지</td>
+<td>77</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2006.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>강원도</td>
+<td>18.996236</td>
+<td>57.711840</td>
+<td>23.291924</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>주문진수산시장</td>
+<td>상설</td>
+<td>강원도 강릉시 주문진읍 시장1길 4-1</td>
+<td>상설</td>
+<td>강원 강릉시 주문진읍 주문리 312-91번지</td>
+<td>42</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2007.0</td>
+<td>2015-12-31</td>
+<td>small</td>
+<td>high</td>
+<td>강원도</td>
+<td>18.996236</td>
+<td>57.711840</td>
+<td>23.291924</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1434</td>
+<td>엄정내창시장</td>
+<td>상설+정기</td>
+<td>충청북도 충주시 엄정면 내창로 191-1</td>
+<td>5일</td>
+<td>충북 충주시 엄정면 미내리 159-15</td>
+<td>98</td>
+<td>온누리상품권</td>
+<td>N</td>
+<td>N</td>
+<td>2013.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>low</td>
+<td>충청북도</td>
+<td>20.325553</td>
+<td>59.036953</td>
+<td>20.637494</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1435</td>
+<td>중앙공설시장</td>
+<td>상설</td>
+<td>충청북도 충주시 예성로 168</td>
+<td>상설</td>
+<td>충북 충주시 성서동 306</td>
+<td>65</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2005.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>충청북도</td>
+<td>20.325553</td>
+<td>59.036953</td>
+<td>20.637494</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1436</td>
+<td>남부시장</td>
+<td>상설</td>
+<td>충청북도 충주시 지곡10길 38-1</td>
+<td>상설</td>
+<td>충북 충주시 지현동 1431</td>
+<td>61</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2005.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>충청북도</td>
+<td>20.325553</td>
+<td>59.036953</td>
+<td>20.637494</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1437</td>
+<td>충주자유시장</td>
+<td>상설+정기</td>
+<td>충청북도 충주시 충인6길 16</td>
+<td>5일</td>
+<td>충북 충주시 충인동 325</td>
+<td>274</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2005.0</td>
+<td>2015-12-31</td>
+<td>large</td>
+<td>high</td>
+<td>충청북도</td>
+<td>20.325553</td>
+<td>59.036953</td>
+<td>20.637494</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1438</td>
+<td>목행시장</td>
+<td>상설+정기</td>
+<td>충청북도 충주시 행정9길 35</td>
+<td>5일</td>
+<td>충북 충주시 목행동 676-44</td>
+<td>92</td>
+<td>온누리상품권</td>
+<td>Y</td>
+<td>Y</td>
+<td>2013.0</td>
+<td>2015-12-31</td>
+<td>medium</td>
+<td>high</td>
+<td>충청북도</td>
+<td>20.325553</td>
+<td>59.036953</td>
+<td>20.637494</td>
+</tr>
+</tbody>
+</table>
+
+<p>1439 rows × 17 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="대-이상-비율의-계급-나누기" class="level1">
+<h1>60대 이상 비율의 계급 나누기</h1>
+<div id="50bcf125" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>market_pop[<span class="st">'age_over_60'</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>count    1439.000000
+mean       20.253145
+std         3.405308
+min        14.018256
+25%        18.435867
+50%        19.558790
+75%        23.291924
+max        26.657573
+Name: age_over_60, dtype: float64</code></pre>
+</div>
+</div>
+<p>평균 20.25% 보다 높은 지역을 60대 이상 비율이 많다고 정의</p>
+</section>
+<section id="표-그리기" class="level1">
+<h1>표 그리기</h1>
+<div id="3a6c639b" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 평균 변수 지정</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>mean_60 <span class="op">=</span> market_pop[<span class="st">'age_over_60'</span>].mean()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 집단 나누기</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>market_pop.groupby(<span class="st">'market_scale'</span>) <span class="op">\</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>          .agg(mean <span class="op">=</span> (<span class="st">'age_over_60'</span>,<span class="st">'mean'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">market_scale</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">large</td>
+<td>19.663038</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">medium</td>
+<td>20.003572</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">small</td>
+<td>21.366309</td>
 </tr>
 </tbody>
 </table>
@@ -1069,7 +2025,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
