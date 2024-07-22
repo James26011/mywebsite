@@ -5,8 +5,48 @@ date: "2024-07-22"
 categoty: [bigdata]
 jupyter: python3
 ---
+# 2024-07-22(월) textbook ch.8
 
-2024-07-22(화) homework3
+#### 데이터 불러오기
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+
+mpg = pd.read_csv('../../data/mpg.csv')
+```
+
+```{python}
+plt.clf()
+sns.scatterplot(data = mpg, x = 'displ', y = 'hwy', hue = 'drv') \
+   .set(xlim = [3,6], ylim = [10,30])
+plt.show()
+```
+plotly 사용하기
+```{python}
+px.scatter(data_frame = mpg, x = 'displ', y = 'hwy', color = 'drv')
+```
+```{python}
+df_mpg = mpg.groupby('drv', as_index = False) \
+            .agg(mean_hwy = ('hwy','mean'))
+df_mpg = df_mpg.sort_values('mean_hwy',ascending = False)
+df_mpg
+```
+```{python}
+plt.clf()
+sns.barplot(data = df_mpg, x = 'drv', y = 'mean_hwy', hue = 'drv')
+plt.show()
+```
+
+
+
+
+
+
+
+# 2024-07-22(월) homework3
 
 ```{python}
 import pandas as pd
