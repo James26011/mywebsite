@@ -1,5 +1,5 @@
 ---
-title: "LS 빅데이터 스쿨 Homework 3"
+title: "교재 복습"
 author: "이태현"
 date: "2024-07-22"
 categoty: [bigdata]
