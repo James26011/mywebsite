@@ -310,3 +310,25 @@ plt.plot(x_values,pdf_values, color = 'red', linewidth = 2)
 plt.show()
 plt.clf()
 
+
+
+
+# 균일 분포 uniform 라이브러리 호출
+from scipy.stats import uniform
+
+# X ~ U(a,b)
+# loc = a, scale = b - a
+# 균일분포 (3,7)에서 20개의 표본을 10000번 뽑음
+x = uniform.rvs(loc=3, scale=4, size=20*10000).reshape(-1,20)
+x
+
+# 1. 분산 s_2 : n - 1로 나눈 분산
+import numpy as np
+s_2 = x.var(axis=1, ddof=1)
+s_2
+
+import matplotlib.pyplot as plt
+plt.hist(s_2, color = 'blue', alpha=0.4, label = 'n-1')
+plt.legend()
+plt.show()
+plt.clf()

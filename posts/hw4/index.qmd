@@ -1,0 +1,69 @@
+---
+title: "LS 빅데이터 스쿨 Homework 4"
+author: "이태현"
+date: "2024-07-29"
+categoty: [bigdata]
+jupyter: python3
+---
+# 2024-07-29(월)
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from scipy.stats import uniform
+from scipy.stats import norm
+import math
+import numpy as np
+```
+
+# 표본 분산 계산 시 왜 n-1로 나누는지 알아보도록 하겠습니다. 균일분포 (3, 7)에서 20개의 표본을 뽑아서 분산을 2가지 방법으로 추정해보세요.
+
+#### n-1로 나눈 것을 s_2, n으로 나눈 것을 k_2로 정의하고, s_2의 분포와 k_2의 분포를 그려주세요! (10000개 사용)
+```{python}
+x = uniform.rvs(loc=3, scale=4, size=20*10000).reshape(-1,20)
+x
+```
+
+```{python}
+# n-1로 나누기
+s_2 = x.var(axis=1, ddof=1)
+s_2
+```
+```{python}
+# s_2의 분포
+plt.hist(s_2,color='orange')
+plt.show()
+plt.clf()
+```
+
+
+```{python}
+# n으로 나누기
+k_2 = x.var(axis=1,ddof=0)
+k_2
+```
+```{python}
+# k_2의 분포
+plt.hist(k_2,color='green')
+plt.show()
+plt.clf()
+```
+
+#### 각 분포 그래프에 모분산의 위치에 녹색 막대를 그려주세요.
+```{python}
+plt.hist(s_2,color='red')
+plt.axvline(x = x.var(),color='white',linestyle='--',linewidth=1)
+plt.show()
+plt.clf()
+```
+```{python}
+plt.hist(k_2,color='green')
+plt.axvline(x = x.var(),color='black',linestyle='--',linewidth=1)
+plt.show()
+plt.clf()
+```
+#### 결과를 살펴보고, 왜 n-1로 나눈 것을 분산을 추정하는 지표로 사용하는 것이 타당한지 써주세요!
+
+s_2의 분포는 모분산에 근접합니다. 하지만 k_2의 분포는 모분산보다 낮게 추정됩니다.
+
+즉 s_2의 경우 표본 분산이 모분산에 대해 편향 없는 추정량이라는 의미입니다. k_2는 표본의 분산을 보정없이 계산하므로, 모분산을 과소 추정하는 경향이 있습니다.
