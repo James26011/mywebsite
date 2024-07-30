@@ -1,0 +1,86 @@
+---
+title: "LS 빅데이터 스쿨 Homework 5"
+author: "이태현"
+date: "2024-07-30"
+categoty: [bigdata]
+jupyter: python3
+---
+# 2024-07-30(화)
+```{python}
+import pandas as pd
+import seaborn as sns
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+```
+
+# 챕터 9-2 설문조사 그래프에서 각 성별 95% 신뢰구간 계산후 그리기. norm.ppf() 사용해서 그릴 것. 모분산은 표본 분산을 사용해서 추정하기
+
+```{python}
+# 파일 불러오기
+raw_welfare = pd.read_spss('C:/Users/USER/Documents/LS빅데이터스쿨/portfolio/data/koweps/Koweps_hpwc14_2019_beta2.sav')
+
+welfare=raw_welfare.copy()
+
+# 변수명 전처리
+welfare=welfare.rename(
+    columns = {
+        "h14_g3": "sex",
+        "h14_g4": "birth",
+        "h14_g10": "marriage_type",
+        "h14_g11": "religion",
+        "p1402_8aq1": "income",
+        "h14_eco9": "code_job",
+        "h14_reg7": "code_region"
+    }
+)
+
+# 필요한 칼럼만 추출하기
+welfare=welfare[["sex", "birth", "marriage_type",
+                "religion", "income", "code_job", "code_region"]]
+
+# 성별 변수 변경
+welfare["sex"] = np.where(welfare["sex"] == 1,'male', 'female')
+welfare["sex"].value_counts()
+```
+
+```{python}
+# 성별에 따른 월급 그래프 그리기
+sex_income=welfare.dropna(subset="income") \
+                  .groupby("sex", as_index=False) \
+                  .agg(mean_income = ("income", "mean"))
+
+sns.barplot(data=sex_income, x="sex", y="mean_income",
+            hue="sex")
+plt.show()
+plt.clf()
+```
+```{python}
+# 표준편차, 표본 갯수 구하기
+sex_income = welfare.dropna(subset=["income"]) \
+                    .groupby("sex", as_index=False) \
+                    .agg(mean_income=("income", "mean"), 
+                         std_income=("income", "std"), 
+                         count=("income", "size"))
+
+# 신뢰구간 계산
+confidence = 0.95
+z = norm.ppf((1 + confidence) / 2)
+
+# 신뢰구간 계산
+sex_income['ci_lower'] = sex_income['mean_income'] - z * (sex_income['std_income'] / np.sqrt(sex_income['count']-1))
+sex_income['ci_upper'] = sex_income['mean_income'] + z * (sex_income['std_income'] / np.sqrt(sex_income['count']-1))
+
+# 시각화
+plt.figure(figsize=(10, 6))
+sns.barplot(data=sex_income, x="sex", y="mean_income", hue="sex", ci=None)
+plt.errorbar(sex_income['sex'], sex_income['mean_income'], 
+             yerr=[sex_income['mean_income'] - sex_income['ci_lower'], 
+                   sex_income['ci_upper'] - sex_income['mean_income']], 
+             fmt='none', color='black', capsize=10)
+plt.show()
+plt.clf()
+```
+
+
+
