@@ -1,0 +1,12 @@
+{
+  "hash": "ed5e4c59c107abdc89a7b2fb2b68f738",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: LS 빅데이터 스쿨 Homework 6\nauthor: 이태현\ndate: '2024-08-05'\ncategoty:\n  - bigdata\n---\n\n# 2024-08-05(월)\n슬통 자동자는 매해 출시되는 신형 자동차의 에너지 소비효율 등급을 1등급으로 유지하고 있다. 22 년 개발된 신형 모델이 한국 자동차 평가원에서 설정한 에너지 소비 효율등급 1등급을 받을 수 있을지 검정하려한다. 평가원에 따르면 1등급의 기준은 평균 복합 에너지 소비효율이 16.0 이상인 경우 부여 한다고 한다. 다음은 신형 자동차 15대의 복합 에너지소비효율 측정한 결과이다. \n\n`15.078, 15.752, 15.549, 15.56, 16.098, 13.277, 15.462, 16.116, 15.214, 16.93, 14.118, 14.927, 15.382, 16.709, 16.804`\n\n표본에 의하여 판단해볼때, 현대자동차의 신형 모델은 에너지 효율 1등급으로 판단할 수 있을지 판단해보시오. (유의수준 1%로 설정) \n\n::: {#41f073df .cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\n```\n:::\n\n\n# 1. 검정을 위한 가설을 명확하게 서술하시오.\nH0 : 소비효율 >= 16.0\n\nHa : 소비효율 < 16.0\n\n\n# 2. 검정통계량 계산하시오.\n\n::: {#d4a15dfb .cell execution_count=2}\n``` {.python .cell-code}\nx = np.array([15.078, 15.752, 15.549, 15.56, 16.098, 13.277, 15.462, 16.116, 15.214, 16.93, 14.118, 14.927,15.382, 16.709, 16.804])\n\nn = len(x)\nx_mean = np.mean(x).round(3)\ns = np.std(x, ddof=1).round(3)\nt = ((x_mean - 16) / (s/np.sqrt(n))).round(3)\n\nprint('표본 갯수 : ', n)\nprint('표본 평균 : ', x_mean)\nprint('표본 분산 : ', s)\nprint('t : ', t)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n표본 갯수 :  15\n표본 평균 :  15.532\n표본 분산 :  0.98\nt :  -1.85\n```\n:::\n:::\n\n\n# 3. p‑value을 구하세요.\n\n::: {#60cc770f .cell execution_count=3}\n``` {.python .cell-code}\nfrom scipy import stats\np_value = stats.t.cdf(t,n-1)\n\nprint('p-value : ', p_value)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\np-value :  0.0427658180508888\n```\n:::\n:::\n\n\n위 p-value는 유의수준 0.01보다 크므로 귀무가설을 기각할 수 있는 조건이 아니다.\n\n\n# 4. 현대자동차의 신형 모델의 평균 복합 에너지 소비효율에 대하여 95% 신뢰구간을 구해보세요.\n\n::: {#c4d3148f .cell execution_count=4}\n``` {.python .cell-code}\n# 95% 신뢰수준에 대한 t 임계값\nt_cri = stats.t.ppf(0.975,n-1)\n\n# 신뢰구간 계산\nresult = (x_mean - t_cri*s/np.sqrt(n), x_mean + t_cri*s/np.sqrt(n))\nresult\n```\n\n::: {.cell-output .cell-output-display execution_count=4}\n```\n(14.989294089266652, 16.07470591073335)\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

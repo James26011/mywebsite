@@ -5,7 +5,9 @@ date: "2024-07-30"
 categoty: [bigdata]
 jupyter: python3
 ---
+
 # 2024-07-30(화)
+
 ```{python}
 import pandas as pd
 import seaborn as sns
@@ -55,6 +57,7 @@ sns.barplot(data=sex_income, x="sex", y="mean_income",
 plt.show()
 plt.clf()
 ```
+
 ```{python}
 # 표준편차, 표본 갯수 구하기
 sex_income = welfare.dropna(subset=["income"]) \
@@ -81,6 +84,3 @@ plt.errorbar(sex_income['sex'], sex_income['mean_income'],
 plt.show()
 plt.clf()
 ```
-
-
-
