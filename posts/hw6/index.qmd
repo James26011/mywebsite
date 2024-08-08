@@ -2,7 +2,7 @@
 title: "LS 빅데이터 스쿨 Homework 6"
 author: "이태현"
 date: "2024-08-05"
-categoty: [bigdata]
+categoty: ['bigdata']
 jupyter: python3
 ---
 # 2024-08-05(월)
