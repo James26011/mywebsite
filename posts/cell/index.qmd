@@ -57,8 +57,10 @@ print(result.summary())
 # 유의성은 회귀모델의 p-value 및 로그가능도 검정 (likelihood ratio test)로 판단
 p_value = result.llr_pvalue
 print(f"모델의 유의성 p-value: {p_value}")
+
 ```
 
+유의수준 0.05보다 작다 –> 유의함
 
 # 문제 3. 유의수준이 0.2를 기준으로 통계적으로 유의한 변수는 몇개이며, 어느 변수 인가요?
 ```{python}
