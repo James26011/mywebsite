@@ -4,6 +4,7 @@
     "items": [
       "/posts/index.html",
       "/posts/test/test.html",
+      "/posts/cell/index.html",
       "/posts/hw7/index.html",
       "/posts/hw6/index.html",
       "/posts/hw5/index.html",
@@ -19,6 +20,7 @@
     "listing": "/posts/index.html",
     "items": [
       "/posts/test/test.html",
+      "/posts/cell/index.html",
       "/posts/hw7/index.html",
       "/posts/hw6/index.html",
       "/posts/hw5/index.html",
